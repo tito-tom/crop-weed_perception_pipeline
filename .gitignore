@@ -1,0 +1,34 @@
+# Python / PyTorch
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+*.pt
+*.onnx
+*.engine
+
+# ROS 2 Build Artefacts
+build/
+install/
+log/
+.built_by
+
+# Node.js / Dashboard
+node_modules/
+npm-debug.log*
+
+# Output & Runs
+runs/
+output/
+data/processed/
+data/raw/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

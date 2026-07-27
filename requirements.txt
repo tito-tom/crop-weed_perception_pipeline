@@ -1,0 +1,26 @@
+# Crop & Weed Dual-Head Perception Pipeline Dependencies
+
+# Deep Learning & Torch
+torch>=2.0.0
+torchvision>=0.15.0
+ultralytics>=8.0.0
+onnx>=1.14.0
+onnxruntime>=1.15.0
+
+# Computer Vision & Data Processing
+opencv-python>=4.8.0
+numpy>=1.24.0
+pillow>=9.5.0
+scipy>=1.10.0
+shapely>=2.0.0
+scikit-learn>=1.2.0
+scikit-image>=0.21.0
+matplotlib>=3.7.0
+pyyaml>=6.0
+
+# ROS 2 & Middleware (Optional for ROS environment)
+# rclpy (provided by ROS 2 Humble/Jazzy installation)
+# cv_bridge (provided by ROS 2 desktop installation)
+
+# Web Dashboard Bridge
+# nodejs / express / roslibjs / socket.io (see 04_web_dashboard/package.json)

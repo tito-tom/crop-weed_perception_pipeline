@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOLO-Seg-Root Agricultural Telemetry Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/eventemitter3@4.0.7/dist/eventemitter3.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/roslib@1.1.0/build/roslib.min.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header>
+            <div class="logo-section">
+                <h1>🌱 YOLO-Seg-Root Telemetry</h1>
+                <p>Real-Time Crop & Weed Perception System</p>
+            </div>
+            <div class="connection-section">
+                <div class="ip-input-group">
+                    <input type="text" id="rosbridge-ip" placeholder="Jetson / Host IP" value="127.0.0.1">
+                    <button id="connect-btn">Connect</button>
+                </div>
+                <div class="status-badge">
+                    <span class="status-dot" id="connection-dot"></span>
+                    <span id="connection-text">Disconnected</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="dashboard-grid">
+            <div class="left-column">
+                <div class="card">
+                    <div class="card-title">Live Perception Feed</div>
+                    <div class="video-panel">
+                        <img id="video-feed" src="" style="display: none;" alt="Live video feed">
+                        <div class="video-placeholder" id="video-placeholder">
+                            <p>Waiting for WebSocket connection to display feed...</p>
+                        </div>
+                        <div class="video-stats">
+                            <span id="feed-fps">0.0 FPS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-box crops">
+                        <span class="stat-label">Crops Tracked</span>
+                        <span class="stat-value" id="crop-count">0</span>
+                    </div>
+                    <div class="stat-box weeds">
+                        <span class="stat-label">Weeds Tracked</span>
+                        <span class="stat-value" id="weed-count">0</span>
+                    </div>
+                    <div class="stat-box total">
+                        <span class="stat-label">Total Detections</span>
+                        <span class="stat-value" id="total-count">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-column">
+                <div class="card">
+                    <div class="card-title">Perception Distribution</div>
+                    <div class="chart-container">
+                        <canvas id="ratioChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">Active Tracked Targets</div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Class</th>
+                                    <th>Conf</th>
+                                    <th>Depth (m)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="detections-tbody">
+                                <tr>
+                                    <td colspan="4" style="text-align: center;">No active targets tracked</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">System Status Log</div>
+                    <div class="log-panel" id="log-panel">
+                        <div class="log-entry">Interface initialized. Ready to connect.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
