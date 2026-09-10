@@ -24,8 +24,9 @@ npm-debug.log*
 # Output & Runs
 runs/
 output/
-data/processed/
-data/raw/
+
+# Data
+data/
 
 # IDE / OS
 .vscode/
